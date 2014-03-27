@@ -1,0 +1,82 @@
+extends ../shared/template
+
+block content
+  .row
+    .small-12.columns
+      form(class='background', action='/records', method='post')
+        fieldset
+          legend Parking Form
+          .row
+            .small-6.columns
+              label(for='date') Date
+              input(type='date', name='date')
+            .small-6.columns
+              label(for='startTime') Start Time
+              input(type='time', name='startTime')
+          .row
+            .small-6.columns
+              label(for='lot') Lot
+              input(type='text', name='lot')
+            .small-6.columns
+              label(for='endTime') End Time
+              input(type='time', name='endTime')
+          .row
+            .small-6.columns
+              label(for='occasion') Event
+              input(type='text', name='occasion')
+            .small-6.columns
+              label(for='attendants') Attendants
+              input(type='text', name='attendants')
+          .row
+            .small-6.columns
+              label(for='totalCards') Total Cards
+              input(type='number', name='totalCards')
+            .small-6.columns
+              label(for='usedCards') Used Cards
+              input(type='number', name='usedCards')
+          .row
+            .small-3.columns
+              label Number of Vehicles
+              input(type='number', name='numberOfVehiclesOne')
+              input(type='number', name='numberOfVehiclesTwo')
+              input(type='number', name='numberOfVehiclesThree')
+              input(type='number', name='numberOfVehiclesFour')
+              input(type='number', name='numberOfVehiclesFive')
+            .small-3.columns
+              label Amount per Vehicles
+              input(type='number', name='amountPerVehicleOne')
+              input(type='number', name='amountPerVehicleTwo')
+              input(type='number', name='amountPerVehicleThree')
+              input(type='number', name='amountPerVehicleFour')
+              input(type='number', name='amountPerVehicleFive')
+            .small-3.columns
+              label Extended Amount
+              input(type='number', name='extendedAmountOne')
+              input(type='number', name='extendedAmountTwo')
+              input(type='number', name='extendedAmountThree')
+              input(type='number', name='extendedAmountFour')
+              input(type='number', name='extendedAmountFive')
+            .small-3.columns
+              label Note
+              input(type='text', name='noteOne')
+              input(type='text', name='noteTwo')
+              input(type='text', name='noteThree')
+              input(type='text', name='noteFour')
+              input(type='text', name='noteFive')
+          .row
+            .small-6
+              label(for='totalAmount') Total Amount
+              input(type='number', name='totalAmount')
+            .small-6
+              label(for='startUp') Start Up Amount
+              input(type='number', name='startUp')
+          .row
+            .small-12.columns
+              label Final Notes
+              input(type='textarea', name='notes')
+          .row
+            .small-12.columns
+              button Submit Parking From
+
+
+
