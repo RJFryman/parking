@@ -5,21 +5,3 @@ NSS Cohort 4 Integrated Node.js Template
 [![Coverage Status](https://coveralls.io/repos/RJFryman/parking/badge.png)](https://coveralls.io/r/RJFryman/parking)
 [![Dependency Status](https://gemnasium.com/RJFryman/parking.png)](https://gemnasium.com/RJFryman/parking)
 
-- Node.js
-- Express
-- MongoDB
-- Redis
-- Moment
-- Bcrypt
-- Lo-Dash
-- Less
-- Jade
-- Request
-- Grunt
-- Mocha
-- Chai
-- SuperTest
-- Blanket
-- TravisCI
-- Coveralls
-
