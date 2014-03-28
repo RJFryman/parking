@@ -1,9 +1,10 @@
 'use strict';
 
 var Record = require('../models/record');
+var moment = require('../static/js/vendor/moment');
 
 exports.index = function(req, res){
-  res.render('records/index');
+  res.render('records/index', {moment:moment});
 };
 
 exports.new = function(req, res){
@@ -18,7 +19,7 @@ exports.find = function(req, res){
 
 exports.show = function(req, res){
   Record.findById(req.params.id, function(record){
-    res.render('records/show', {record:record});
+    res.render('records/show', {record:record, moment:moment});
   });
 };
 
@@ -30,15 +31,15 @@ exports.create = function(req, res){
 };
 
 exports.destroy = function(req, res){
-  Record.finyById(req.params.id, function(record){
+  Record.deleteById(req.params.id, function(record){
     res.redirect('/');
   });
 };
-
+/*
 exports.update = function(req, res){
   var updatedRecord = new Record(req.body);
   updatedRecord.update(function(count){
     res.redirect('/records/'+ updatedRecord._id.toString());
   });
 };
-
+*/

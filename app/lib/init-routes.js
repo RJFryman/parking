@@ -22,14 +22,14 @@ function load(app, fn){
   app.post('/register', d, users.create);
   app.get('/login', d, users.auth);
   app.post('/login', d, users.login);
-  app.get('/logout', d, users.logout);
+  app.post('/logout', d, users.logout);
   app.post('/records', d, records.create);
   app.get('/records', d, records.index);
   app.get('/find', d, records.find);
   app.get('/records/new', d, records.new);
   app.get('/records/:id', d, records.show);
-  app.del('/records/:id', d, records.destory);
-  app.put('/records/:id', d, records.update);
+  app.del('/records/:id', d, records.destroy);
+//  app.put('/records/:id', d, records.update);
   console.log('Routes Loaded');
   fn();
 }

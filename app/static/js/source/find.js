@@ -25,7 +25,7 @@
 
   function sortrecords(event){
     if($(this).hasClass('date')){
-      query.sort = 'dater';
+      query.sort = 'date';
     }else if ($(this).hasClass('lot')){
       query.sort = 'lot';
     }else{
@@ -44,11 +44,11 @@
     }else if ($(this).hasClass('lot')){
       query.filterName = 'lot';
       query.filterValue = $(this).text();
-    }else if ($(this).hasClass('attendatss')){
-      query.filterName = 'attendatss';
+    }else if ($(this).hasClass('attendants')){
+      query.filterName = 'attendants';
       query.filterValue = $(this).text();
-    }else{ ($(this).hasClass('category'));
-      query.filterName = 'category';
+    }else{ ($(this).hasClass('occasion'));
+      query.filterName = 'occasion';
       query.filterValue = $(this).text();
     }
 
@@ -110,7 +110,7 @@
 
     $gtr.append('<a href="/records/'+record._id.toString()+'">Record</a>').fadeIn(1000);
 
-    $date.append('<a class="filter date" href="#">'+record.date+'</a>').fadeIn(1000);
+    $date.append(moment(record.date).format('MMMM Do YYYY')).fadeIn(1000);
     $lot.append('<a class="filter lot" href="#">'+record.lot+'</a>').fadeIn(1000);
     $occasion.append('<a class="filter occasion" href="#">'+record.occasion+'</a>').fadeIn(1000);
 

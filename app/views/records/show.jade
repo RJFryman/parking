@@ -1,2 +1,95 @@
 extends ../shared/template
 
+block content
+  .row
+    .small-12.columns.title
+      h1 Parking Revenue and Report
+  .row
+    .small-4.columns.date
+       h5= 'Date        '+ moment(record.date).format('MMMM Do, YYYY')
+    .small-4.columns: &nbsp;
+    .small-4.columns
+      h5= 'Start Time '+ record.startTime
+  .row
+    .small-4.columns
+       h5= 'Lot        '+ record.lot
+    .small-4.columns: &nbsp;
+    .small-4.columns
+      h5= 'End Time '+ record.endTime
+  .row
+    .small-4.columns
+      h5= 'Event '+record.occasion
+    .small-4.columns: &nbsp;
+    .small-4.columns
+      h5= record.attendants
+  .row
+    .small-2.columns: &nbsp;
+    .small-4.columns
+      h5= 'Total Cards '+record.totalCards
+    .small-4.columns
+      h5= 'Cards Used '+record.usedCards
+    .small-2.columns: &nbsp;
+  .row
+    .small-3.columns
+      h4= 'Number of Vehicles'
+    .small-3.columns
+      h4= 'Amount per Vehicle'
+    .small-3.columns
+      h4= 'Extended Amount'
+    .small-3.columns
+      h4= 'Note'
+  .row: if record.logOne
+    .small-3.columns
+        h5= record.logOne.numberOfVehicles
+    .small-3.columns
+        h5= '$ '+record.logOne.amountPerVehicle
+    .small-3.columns
+        h5= '$ '+record.logOne.extendedAmount
+    .small-3.columns
+        h5= record.logOne.note
+  .row: if record.logTwo
+    .small-3.columns
+        h5= record.logTwo.numberOfVehicles
+    .small-3.columns
+        h5= '$ '+record.logTwo.amountPerVehicle
+    .small-3.columns
+        h5= '$ '+record.logTwo.extendedAmount
+    .small-3.columns
+        h5= record.logTwo.note
+  .row: if record.logThree
+    .small-3.columns
+        h5= record.logThree.numberOfVehicles
+    .small-3.columns
+        h5= '$ '+record.logThree.amountPerVehicle
+    .small-3.columns
+        h5= '$ '+record.logThree.extendedAmount
+    .small-3.columns
+        h5= record.logThree.note
+  .row: if record.logFour
+    .small-3.columns
+        h5= record.logFour.numberOfVehicles
+    .small-3.columns
+        h5= '$ '+record.logFour.amountPerVehicle
+    .small-3.columns
+        h5= '$ '+record.logFour.extendedAmount
+    .small-3.columns
+        h5= record.logFour.note
+  .row: if record.logFive
+    .small-3.columns
+        h5= record.logFive.numberOfVehicles
+    .small-3.columns
+        h5= '$ '+record.logFive.amountPerVehicle
+    .small-3.columns
+        h5= '$ '+record.logFive.extendedAmount
+    .small-3.columns
+        h5= record.logFive.note
+  .row
+    .small-6.columns
+      Total Amount (Not includug Start Up)
+    .small-3.columns
+      h5= '$ '+record.totalAmount
+    .small-3.columns
+      h5= '$ '+record.startUp
+  .row
+    .small-12.columns
+      h5= record.notes
