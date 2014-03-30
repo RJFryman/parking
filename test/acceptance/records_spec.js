@@ -24,7 +24,7 @@ describe('Record', function(){
     global.nss.db.dropDatabase(function(err, result){
       u1 = new User({username:'test', email:'test@nomail.com', password:'1234'});
       u1.register(function(){
-        r1 = new Record({attendants:'', lot:'lot1', occasion:'hockey', startTime:'5:00', endTime:'8:00', attendantOne:'Robert', totalCards:'50', usedCards:'45', numberOfVehiclesOne:'6', amountPerVehicleOne:'2', extendedAmountOne:'12', totalAmount:'1000', startUp:'100', notes:'I hope this all works'});
+        r1 = new Record({date:'123',attendants:'', lot:'lot1', occasion:'hockey', startTime:'5:00', endTime:'8:00', attendantOne:'Robert', totalCards:'50', usedCards:'45', numberOfVehiclesOne:'6', amountPerVehicleOne:'2', extendedAmountOne:'12', totalAmount:'1000', startUp:'100', notes:'I hope this all works'});
         r1.insert(function(){
           request(app)
           .post('/login')
@@ -85,18 +85,10 @@ describe('Record', function(){
       .expect(200, done);
     });
   });
-  describe('post /lot', function(){
-    it('should display the recordindex', function(done){
-      request(app)
-      .get('/lot')
-      .set('cookie', cookie)
-      .expect(200, done);
-    });
-  });
   describe('post /lot/:name', function(){
     it('should display the recordindex', function(done){
       request(app)
-      .get('/lot/lot')
+      .get('/lot/lot1')
       .set('cookie', cookie)
       .expect(200, done);
     });
@@ -104,7 +96,7 @@ describe('Record', function(){
   describe('get /date', function(){
     it('should display the recordindex', function(done){
       request(app)
-      .get('/date')
+      .get('/daylot')
       .set('cookie', cookie)
       .expect(200, done);
     });
@@ -112,23 +104,7 @@ describe('Record', function(){
   describe('get /date/date', function(){
     it('should display the recordindex', function(done){
       request(app)
-      .get('/date/date')
-      .set('cookie', cookie)
-      .expect(200, done);
-    });
-  });
-  describe('get /car', function(){
-    it('should display the recordindex', function(done){
-      request(app)
-      .get('/car')
-      .set('cookie', cookie)
-      .expect(200, done);
-    });
-  });
-  describe('get /car/find', function(){
-    it('should display the recordindex', function(done){
-      request(app)
-      .get('/car/find')
+      .get('/date/123')
       .set('cookie', cookie)
       .expect(200, done);
     });

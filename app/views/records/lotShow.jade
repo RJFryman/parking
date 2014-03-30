@@ -1,1 +1,64 @@
 extends ../shared/template
+
+block js
+  script(src='/js/source/things.js')
+
+block content
+  .row
+    .small-12.columns
+      form(class='background').form
+        fieldset
+          legend
+          .row
+            .small-12.columns.title
+              h1= records[0].lot
+          .row
+            .small-4.columns.title
+              h4= 'Total Cards Used'
+              h4#TCU= 'test'
+            .small-4.columns.title
+              h4= 'Total Extend Amount'
+              h4#TEA= 'test'
+            .small-4.columns.title
+              h4= 'Average per Vehicle'
+              h4#APV= 'test'
+          .row: &nbsp;
+          .row
+            .small-12.columns.large-10.large-centered
+              table
+                thead
+                  th: label Date
+                  th: label Number of Vehicles
+                  th: label Amount Per Vehicles
+                  th: label Extended Amount
+                tbody
+                  each record in records
+                    tr
+                      th: input(value=record.date)
+                      th: input(value=record.logOne.numberOfVehicles).nv
+                      th: input(value=record.logOne.amountPerVehicle).av
+                      th: input(value=record.logOne.extendedAmount).ea
+                    tr: if record.logTwo
+                      th: input(value=record.date)
+                      th: input(value=record.logTwo.numberOfVehicles).nv
+                      th: input(value=record.logTwo.amountPerVehicle).av
+                      th: input(value=record.logTwo.extendedAmount).ea
+                    tr: if record.logThree
+                      th: input(value=record.date)
+                      th: input(value=record.logThree.numberOfVehicles).nv
+                      th: input(value=record.logThree.amountPerVehicle).av
+                      th: input(value=record.logThree.extendedAmount).ea
+                    tr: if record.logFour
+                      th: input(vale=record.date)
+                      th: input(value=record.logFour.numberOfVehicles).nv
+                      th: input(value=record.logFour.amountPerVehicle).av
+                      th: input(value=record.logFour.extendedAmount).ea
+                    tr: if record.LogFive
+                      th: input(value=record.date)
+                      th: input(value=record.logFive.numberOfVehicles).nv
+                      th: input(value=record.logFive.amountPerVehicle).av
+                      th: input(value=record.logFive.extendedAmount).ea
+
+
+
+

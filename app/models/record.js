@@ -7,7 +7,7 @@ var Mongo = require('mongodb');
 var _ = require('lodash');
 
 function Record(data){
-  this.date = data.date ? new Date(data.date) : new Date();
+  this.date = data.date;
   this.lot = data.lot || 'no lot specified';
   this.occasion = data.occasion || ' no event specified';
   this.startTime = data.startTime || 'no starttime specified';
@@ -80,6 +80,12 @@ Record.findById = function(id, fn){
 
 Record.findByLot = function(lot, fn){
   records.find({lot:lot}).toArray(function(err, records){
+    fn(records);
+  });
+};
+
+Record.findAll = function(fn){
+  records.find().toArray(function(err, records){
     fn(records);
   });
 };

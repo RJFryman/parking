@@ -2,94 +2,87 @@ extends ../shared/template
 
 block content
   .row
-    .small-12.columns.title
-      h1 Parking Revenue and Report
-  .row
-    .small-4.columns.date
-       h5= 'Date       '+record.date
-    .small-4.columns: &nbsp;
-    .small-4.columns
-      h5= 'Start Time '+ record.startTime
-  .row
-    .small-4.columns
-       h5= 'Lot        '+ record.lot
-    .small-4.columns: &nbsp;
-    .small-4.columns
-      h5= 'End Time '+ record.endTime
-  .row
-    .small-4.columns
-      h5= 'Event '+record.occasion
-    .small-4.columns: &nbsp;
-    .small-4.columns
-      h5= record.attendants
-  .row
-    .small-2.columns: &nbsp;
-    .small-4.columns
-      h5= 'Total Cards '+record.totalCards
-    .small-4.columns
-      h5= 'Cards Used '+record.usedCards
-    .small-2.columns: &nbsp;
-  .row
-    .small-3.columns
-      h4= 'Number of Vehicles'
-    .small-3.columns
-      h4= 'Amount per Vehicle'
-    .small-3.columns
-      h4= 'Extended Amount'
-    .small-3.columns
-      h4= 'Note'
-  .row: if record.logOne
-    .small-3.columns
-        h5= record.logOne.numberOfVehicles
-    .small-3.columns
-        h5= '$ '+record.logOne.amountPerVehicle
-    .small-3.columns
-        h5= '$ '+record.logOne.extendedAmount
-    .small-3.columns
-        h5= record.logOne.note
-  .row: if record.logTwo
-    .small-3.columns
-        h5= record.logTwo.numberOfVehicles
-    .small-3.columns
-        h5= '$ '+record.logTwo.amountPerVehicle
-    .small-3.columns
-        h5= '$ '+record.logTwo.extendedAmount
-    .small-3.columns
-        h5= record.logTwo.note
-  .row: if record.logThree
-    .small-3.columns
-        h5= record.logThree.numberOfVehicles
-    .small-3.columns
-        h5= '$ '+record.logThree.amountPerVehicle
-    .small-3.columns
-        h5= '$ '+record.logThree.extendedAmount
-    .small-3.columns
-        h5= record.logThree.note
-  .row: if record.logFour
-    .small-3.columns
-        h5= record.logFour.numberOfVehicles
-    .small-3.columns
-        h5= '$ '+record.logFour.amountPerVehicle
-    .small-3.columns
-        h5= '$ '+record.logFour.extendedAmount
-    .small-3.columns
-        h5= record.logFour.note
-  .row: if record.logFive
-    .small-3.columns
-        h5= record.logFive.numberOfVehicles
-    .small-3.columns
-        h5= '$ '+record.logFive.amountPerVehicle
-    .small-3.columns
-        h5= '$ '+record.logFive.extendedAmount
-    .small-3.columns
-        h5= record.logFive.note
-  .row
-    .small-6.columns
-      Total Amount (Not includug Start Up)
-    .small-3.columns
-      h5= '$ '+record.totalAmount
-    .small-3.columns
-      h5= '$ '+record.startUp
-  .row
     .small-12.columns
-      h5= record.notes
+      form(class='background', action='/records/'+record._id, method='del').form
+        fieldset
+          legend
+          .row
+            .small-12.title
+              h1 Parking Revenue and Report
+          .row
+            .small-4.columns
+              label(for='date') Date
+              input(type='hidden', name='_id' value=record._id)
+              input(type='date', name='date' value=record.date)
+            .small-4.columns
+              label(for='startTime') Start Time
+              input(type='time', name='startTime' value=record.startTime)
+            .small-4.columns
+              label(for='endTime') End Time
+              input(type='time', name='endTime' value=record.endTime)
+          .row
+            .small-6.columns
+              label(for='lot') Lot
+              input(type='text', name='lot' value=record.lot)
+            .small-6.columns
+              label(for='occasion') Event
+              input(type='text', name='occasion' value=record.occasion)
+          .row
+            .small-3.columns
+              label(for='totalCards') Total Cards
+              input(type='number', name='totalCards' value=record.totalCards)
+            .small-3.columns
+              label(for='usedCards') Used Cards
+              input(type='number', name='usedCards' value=record.usedCards)#uc
+            .small-6.columns
+              label(for='attendants') Attendants
+              input(type='text', name='attendants' value=record.attendants)
+          .row
+            .small-12.large-10.columns.large-centered
+              table
+                thead
+                  th: label Number of Vehicles
+                  th: label Amount Per Vehicles in $
+                  th: label Extended Amount in $
+                  th: label Note
+                tbody
+                  tr
+                    th: input(type='number', name='numberOfVehiclesOne' value=record.logOne.numberOfVehicles)#n1
+                    th: input(type='number', name='amountPerVehicleOne' value=record.logOne.amountPerVehicle)#a1
+                    th: input(type='number', name='extendedAmountOne' value=record.logOne.extendedAmount)#e1
+                    th: input(type='text', name='noteOne' value=record.logOne.note)
+                  tr: if record.logTwo
+                    th: input(type='number', name='numberOfVehiclesTwo' value=record.logTwo.numberOfVehicles)#n2
+                    th: input(type='number', name='amountPerVehicleTwo' value=record.logTwo.amountPerVehicle)#a2
+                    th: input(type='number', name='extendedAmountTwo' value=record.logTwo.extendedAmount)#e2
+                    th: input(type='text', name='noteTwo' value=record.logTwo.note)
+                  tr: if record.logThree
+                    th: input(type='number', name='numberOfVehiclesThree' value=record.logThree.numberOfVehicles)#n3
+                    th: input(type='number', name='amountPerVehicleThree' value=record.logThree.amountPerVehicle)#a3
+                    th: input(type='number', name='extendedAmountThree' value=record.logThree.extendedAmount)#e3
+                    th: input(type='text', name='noteThree' value=record.logThree.note)
+                  tr: if record.logFour
+                    th: input(type='number', name='numberOfVehiclesFour' value=record.logFour.numberOfVehicles)#n4
+                    th: input(type='number', name='amountPerVehicleFour' value=record.logFour.amountPerVehicle)#a4
+                    th: input(type='number', name='extendedAmountFour' value=record.logFour.extendedAmount)#e4
+                    th: input(type='text', name='noteFour' value=record.logFour.note)
+                  tr: if record.logFive
+                    th: input(type='number', name='numberOfVehiclesFive' value=record.logFive.numberOfVehicles)#n5
+                    th: input(type='number', name='amountPerVehicleFive' value=record.logFive.amountPerVehicle)#a5
+                    th: input(type='number', name='extendedAmountFive' value=record.logFive.extendedAmount)#e5
+                    th: input(type='text', name='noteFive' value=record.logFive.note)
+          .row
+            .small-6.columns
+              label(for='totalAmount') Total Amount
+              input(type='number', name='totalAmount' value=record.totalAmount)#ta
+            .small-6.columns
+              label(for='startUp') Start Up Amount
+              input(type='number', name='startUp' value=record.startUp)
+          .row
+            .small-12.columns
+              label Final Notes
+              input(type='text', name='notes' value=record.notes)
+
+
+
+

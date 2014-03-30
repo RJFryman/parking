@@ -36,13 +36,9 @@ exports.destroy = function(req, res){
 };
 
 exports.lotShow = function(req, res){
-  Record.findByLot(req.params.lot, function(records){
+  Record.findByLot(req.params.name, function(records){
     res.render('records/lotShow', {records:records});
   });
-};
-
-exports.lot = function(req, res){
-  res.render('records/lot');
 };
 
 exports.dateShow = function(req, res){
@@ -51,8 +47,10 @@ exports.dateShow = function(req, res){
   });
 };
 
-exports.date = function(req, res){
-  res.render('records/date');
+exports.total = function(req, res){
+  Record.findAll(function(records){
+    res.render('records/total', {records:records});
+  });
 };
 
 
