@@ -121,6 +121,16 @@ describe('user', function(){
       });
     });
   });
+  describe('Post Logout', function(){
+    it('should logout a user', function(done){
+      request(app)
+      .post('/logout')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        done();
+      });
+    });
+  });
 
 });
 

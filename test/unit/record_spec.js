@@ -211,12 +211,51 @@ describe('Record', function(){
       });
     });
     it('should find all record page 2 with 5 limit', function(done){
-      var query = {limit:'5', page:'2'};
+      var query = {direction:'1',limit:'5', page:'2'};
 
       Record.find(query, function(records){
         expect(records).to.have.length(5);
         expect(records[0].lot).to.equal('lot6');
         done();
+      });
+    });
+    it('should find all record page 2 with 5 limit', function(done){
+      var query = {direction:'-1',limit:'5', page:'2'};
+
+      Record.find(query, function(records){
+        expect(records).to.have.length(5);
+        expect(records[0].lot).to.equal('lot6');
+        done();
+      });
+    });
+    it('should find by Date', function(done){
+      var r1 = new Record({date:'3-3-20', attendants:'', lot:'lot1', occasion:'hockey', startTime:'5:00', endTime:'8:00', attendantOne:'Robert', totalCards:'50', usedCards:'45', numberOfVehiclesOne:'6', amountPerVehicleOne:'2', extendedAmountOne:'12', totalAmount:'1000', startUp:'100', notes:'I hope this all works'});
+      r1.insert(function(){
+        Record.findByDate(r1.date, function(records){
+          expect(records).to.have.length(1);
+          expect(records[0].lot).to.equal('lot1');
+          done();
+        });
+      });
+    });
+    it('should find by Lot', function(done){
+      var r1 = new Record({attendants:'', lot:'lot1', occasion:'hockey', startTime:'5:00', endTime:'8:00', attendantOne:'Robert', totalCards:'50', usedCards:'45', numberOfVehiclesOne:'6', amountPerVehicleOne:'2', extendedAmountOne:'12', totalAmount:'1000', startUp:'100', notes:'I hope this all works'});
+      r1.insert(function(){
+        Record.findByLot(r1.lot, function(records){
+          expect(records).to.have.length(2);
+          expect(records[0].lot).to.equal('lot1');
+          done();
+        });
+      });
+    });
+    it('should find by Car', function(done){
+      var r1 = new Record({attendants:'', lot:'lot1', occasion:'hockey', startTime:'5:00', endTime:'8:00', attendantOne:'Robert', totalCards:'50', usedCards:'45', numberOfVehiclesOne:'6', amountPerVehicleOne:'2', extendedAmountOne:'12', totalAmount:'1000', startUp:'100', notes:'472042'});
+      r1.insert(function(){
+        Record.findByCar(r1.notes, function(records){
+          expect(records).to.have.length(1);
+          expect(records[0].lot).to.equal('lot1');
+          done();
+        });
       });
     });
 

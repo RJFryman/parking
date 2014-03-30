@@ -1,10 +1,9 @@
 'use strict';
 
 var Record = require('../models/record');
-var moment = require('../static/js/vendor/moment');
 
 exports.index = function(req, res){
-  res.render('records/index', {moment:moment});
+  res.render('records/index');
 };
 
 exports.new = function(req, res){
@@ -19,7 +18,7 @@ exports.find = function(req, res){
 
 exports.show = function(req, res){
   Record.findById(req.params.id, function(record){
-    res.render('records/show', {record:record, moment:moment});
+    res.render('records/show', {record:record});
   });
 };
 
@@ -35,11 +34,34 @@ exports.destroy = function(req, res){
     res.redirect('/');
   });
 };
-/*
-exports.update = function(req, res){
-  var updatedRecord = new Record(req.body);
-  updatedRecord.update(function(count){
-    res.redirect('/records/'+ updatedRecord._id.toString());
+
+exports.lotShow = function(req, res){
+  Record.findByLot(req.params.lot, function(records){
+    res.render('records/lotShow', {records:records});
   });
 };
-*/
+
+exports.lot = function(req, res){
+  res.render('records/lot');
+};
+
+exports.dateShow = function(req, res){
+  Record.findByDate(req.params.date, function(records){
+    res.render('records/dateShow', {records:records});
+  });
+};
+
+exports.date = function(req, res){
+  res.render('records/date');
+};
+
+
+exports.car = function(req, res){
+  res.render('records/car');
+};
+
+exports.findCar = function(req, res){
+  Record.findByCar(req.query, function(records){
+    res.send({records:records});
+  });
+};

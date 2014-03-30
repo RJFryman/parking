@@ -28,8 +28,13 @@ function load(app, fn){
   app.get('/find', d, records.find);
   app.get('/records/new', d, records.new);
   app.get('/records/:id', d, records.show);
+  app.get('/lot', d, records.lot);
+  app.get('/lot/:name', d, records.lotShow);
+  app.get('/date', d, records.date);
+  app.get('/date/:date', d, records.dateShow);
+  app.get('/car', d, records.car);
+  app.get('/car/find', d, records.findCar);
   app.del('/records/:id', d, records.destroy);
-//  app.put('/records/:id', d, records.update);
   console.log('Routes Loaded');
   fn();
 }

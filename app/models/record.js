@@ -78,6 +78,25 @@ Record.findById = function(id, fn){
   });
 };
 
+Record.findByLot = function(lot, fn){
+  records.find({lot:lot}).toArray(function(err, records){
+    fn(records);
+  });
+};
+
+Record.findByDate = function(date, fn){
+  records.find({date:date}).toArray(function(err, records){
+    fn(records);
+  });
+};
+
+Record.findByCar = function(car, fn){
+  car = new RegExp(car);
+  records.find({notes:car}).toArray(function(err, records){
+    fn(records);
+  });
+};
+
 Record.find = function(query, fn){
   var limit = query.limit || 10;
   var skip = query.page ? (query.page - 1) * limit : 0;

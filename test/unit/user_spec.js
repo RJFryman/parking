@@ -20,8 +20,11 @@ describe('User', function(){
   beforeEach(function(done){
     global.nss.db.dropDatabase(function(err, result){
       var u1 = new User({email:'julius@nomail.com', password:'1234'});
+      var u2 = new User({username:'test', email:'test@nomail.com', password:'1234'});
       u1.register(function(err){
-        done();
+        u2.register(function(err){
+          done();
+        });
       });
     });
   });
@@ -48,6 +51,13 @@ describe('User', function(){
     });
     it('should not register a new user', function(done){
       var u1 = new User({email:'julius@nomail.com', password:'1234'});
+      u1.register(function(err){
+        expect(u1._id).to.be.undefined;
+        done();
+      });
+    });
+    it('should not register a new user', function(done){
+      var u1 = new User({username:'test',email:'what@nomail.com', password:'1234'});
       u1.register(function(err){
         expect(u1._id).to.be.undefined;
         done();
