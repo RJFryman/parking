@@ -47,7 +47,6 @@ function Record(data){
     note : data.noteFive
   } : '';
   this.totalAmount = parseInt(data.totalAmount);
-  this.startUp = parseInt(data.startUp);
   this.notes = data.notes;
 }
 

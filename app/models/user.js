@@ -10,6 +10,7 @@ function User(data){
   this.username = data.username;
   this.email = data.email;
   this.password = data.password;
+  this.admin = false;
 }
 
 User.prototype.register = function(fn){

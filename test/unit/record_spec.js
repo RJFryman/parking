@@ -39,7 +39,6 @@ describe('Record', function(){
       expect(r1.logFour).to.deep.equal({'amountPerVehicle':20, 'extendedAmount':60, 'note':'over-night', 'numberOfVehicles':3});
       expect(r1.logFive).to.deep.equal({'amountPerVehicle':5, 'extendedAmount':500, 'note':'lots of text', 'numberOfVehicles':100});
       expect(r1.totalAmount).to.equal(1000);
-      expect(r1.startUp).to.equal(100);
       expect(r1.notes).to.equal('I hope this all works');
     });
     it('should create a new record with logs and attendants being ""',function(){
@@ -59,7 +58,6 @@ describe('Record', function(){
       expect(r1.logFour).to.equal('');
       expect(r1.logFive).to.equal('');
       expect(r1.totalAmount).to.equal(1000);
-      expect(r1.startUp).to.equal(100);
       expect(r1.notes).to.equal('I hope this all works');
     });
   });
